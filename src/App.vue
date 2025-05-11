@@ -1,28 +1,81 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header @upadate-filter-params="setFilterParams" @open-modal="openModal" />
+    <div class="tasks-bar">
+      <TaskList :input="input" :filter="filter" @open-modal="openModal" />
+    </div>
+    <TaskForm :is-shown="isTaskFormShown" :task="selectedTask" @close-form="closeForm" />
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import Vue from 'vue';
+import Header from '~/components/entities/Header.vue';
+import TaskList from '~/components/entities/TaskList.vue';
+import TaskForm from '~/components/entities/TaskForm.vue';
+import { EFilterOption, TTask } from './types';
 
-export default {
+type TDataReturned = {
+  input: string;
+  filter: EFilterOption;
+  isTaskFormShown: boolean;
+  selectedTask: TTask | null;
+};
+
+export default Vue.extend({
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    Header,
+    TaskList,
+    TaskForm,
+  },
+  data(): TDataReturned {
+    return {
+      input: '',
+      filter: EFilterOption.ALL,
+      isTaskFormShown: false,
+      selectedTask: null,
+    };
+  },
+  methods: {
+    setFilterParams({ input, filter }: { input: string; filter: string }) {
+      this.input = input;
+      this.filter = filter;
+    },
+    openModal(task?: TTask) {
+      this.selectedTask = task || null;
+      this.isTaskFormShown = true;
+    },
+    closeForm() {
+      this.selectedTask = null;
+      this.isTaskFormShown = false;
+    },
+  },
+});
 </script>
 
-<style>
+<style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tasks-bar {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+@media #{$desktop-breakpoint} {
+  .tasks-bar {
+    padding: 0 get-desktop-size(20);
+  }
+}
+
+@media #{$mobile-breakpoint} {
+  .tasks-bar {
+    padding: 0 get-mobile-size(10);
+  }
 }
 </style>
