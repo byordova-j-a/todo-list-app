@@ -25,6 +25,7 @@ import { TExtendedTask, EFilterOption } from '~/types';
 type TDataReturned = {
   showedTaskList: TExtendedTask[];
 };
+
 export default Vue.extend({
   name: 'TaskList',
   components: { StatusSwitcher, PencilOutlineIcon, CloseIcon },
@@ -105,22 +106,27 @@ export default Vue.extend({
   cursor: default;
   user-select: none;
 }
+
 .task-header {
   display: flex;
 }
+
 .name {
   flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-wrap: nowrap;
 }
 
 .pencil-outline-icon :deep(svg),
 .close-icon :deep(svg) {
   cursor: pointer;
 }
+
 .pencil-outline-icon :deep(svg) {
   color: #0075ff;
 }
+
 .close-icon :deep(svg) {
   color: red;
 }
@@ -129,11 +135,24 @@ export default Vue.extend({
   display: flex;
 }
 
+@media (hover: hover) {
+  .icons {
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.2s;
+  }
+
+  .task-item:hover .icons {
+    opacity: 1;
+  }
+}
+
 @media #{$desktop-breakpoint} {
   .task-list {
     gap: get-desktop-size(40);
     padding: get-desktop-size(40) 0;
   }
+
   .task-item {
     height: get-desktop-size(190);
     border-radius: get-desktop-size(40);
@@ -142,6 +161,7 @@ export default Vue.extend({
   .task-header {
     font-size: get-desktop-size(40);
   }
+
   .icons {
     gap: get-desktop-size(20);
     transform: translateY(-8%);
@@ -152,14 +172,7 @@ export default Vue.extend({
     height: get-desktop-size(40);
     width: get-desktop-size(40);
   }
-  .icons {
-    opacity: 0;
-    transition-property: opacity;
-    transition-duration: 0.2s;
-  }
-  .task-item:hover .icons {
-    opacity: 1;
-  }
+
   .date {
     font-size: get-desktop-size(25);
   }
@@ -170,11 +183,13 @@ export default Vue.extend({
     gap: get-mobile-size(20);
     padding: get-mobile-size(20) 0;
   }
+
   .task-item {
     height: get-mobile-size(90);
     border-radius: get-mobile-size(20);
     padding: get-mobile-size(15) get-mobile-size(10);
   }
+
   .task-header {
     font-size: get-mobile-size(17);
   }
@@ -183,6 +198,7 @@ export default Vue.extend({
     gap: get-mobile-size(10);
     transform: translateY(-18%);
   }
+
   .pencil-outline-icon :deep(svg),
   .close-icon :deep(svg) {
     height: get-mobile-size(20);

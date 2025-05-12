@@ -23,7 +23,7 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue';
 import Button from '~/components/ui/Button.vue';
-import Input from '../ui/Input.vue';
+import Input from '~/components/ui/Input.vue';
 import StatusSwitcher from '~/components/ui/StatusSwitcher.vue';
 import { TTask } from '~/types';
 
@@ -71,6 +71,7 @@ export default Vue.extend({
       if (!this.task) return true;
       return false;
     },
+
     isConfirmButtonDisabled() {
       return !this.formValue.name.trim();
     },
@@ -101,6 +102,7 @@ export default Vue.extend({
   justify-content: center;
   align-items: center;
 }
+
 .task-form {
   background-color: #a2b8eb;
   box-sizing: border-box;
@@ -110,15 +112,18 @@ export default Vue.extend({
   flex-direction: column;
   user-select: none;
 }
+
 .heading {
   font-family: '18vag';
   color: white;
   align-self: center;
 }
+
 .input-label {
   font-family: '18vag';
   color: white;
 }
+
 .buttons {
   display: flex;
   justify-content: space-between;
@@ -132,9 +137,11 @@ export default Vue.extend({
     padding: get-desktop-size(30);
     gap: get-desktop-size(40);
   }
+
   .heading {
     font-size: get-desktop-size(40);
   }
+
   .input-label {
     font-size: get-desktop-size(30);
     line-height: get-desktop-size(35);
@@ -149,9 +156,11 @@ export default Vue.extend({
     padding: get-mobile-size(20);
     gap: get-mobile-size(10);
   }
+
   .heading {
     font-size: get-mobile-size(20);
   }
+
   .input-label {
     font-size: get-mobile-size(15);
     line-height: get-mobile-size(25);

@@ -35,9 +35,11 @@ export default Vue.extend({
   user-select: none;
   color: white;
 }
+
 .status-switcher span {
   cursor: pointer;
 }
+
 .status-active .active,
 .status-done .done {
   color: red;

@@ -8,58 +8,18 @@
   "extends": [
     "eslint:recommended",
     "plugin:vue/essential",
-    // "airbnb-base",
     "@vue/eslint-config-typescript/recommended",
     "plugin:prettier/recommended"
   ],
-  // globals: {
-  //   Atomics: "readonly",
-  //   SharedArrayBuffer: "readonly",
-  // },
-  // parserOptions: {
-  //   ecmaVersion: 2018,
-  //   sourceType: "module",
-  // },
   "plugins": ["@typescript-eslint", "import"],
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
   "rules": {
-    // camelcase: "off",
     "vue/multi-word-component-names": "off",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
-    // "import/no-useless-path-segments": "error",
-    // "import/prefer-default-export": "off",
-    // "import/order": [
-    //   "error",
-    //   {
-    //     alphabetize: {
-    //       order: "asc",
-    //       caseInsensitive: true,
-    //     },
-    //     groups: ["external", "index", "sibling", "parent", "internal", "builtin", "object"],
-    //   },
-    // ],
-    // "max-len": "off",
-    // "global-require": 0,
-    // "quote-props": 0,
-    // "no-multi-spaces": "error",
-    // "no-irregular-whitespace": "error",
-    // "prettier/prettier": [
-    //   "error",
-    //   {
-    //     semi: true,
-    //     trailingComma: "es5",
-    //     singleQuote: true,
-    //     arrowParens: "avoid",
-    //     printWidth: 100,
-    //   },
-    // ],
-    // "spaced-comment": "error",
-    // "space-unary-ops": "error",
-    // "space-in-parens": "error",
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -73,10 +33,6 @@
   },
   "settings": {
     "import/resolver": {
-      // "node": {
-      //   "paths": ["src"],
-      //   "extensions": [".js", ".jsx", ".ts", ".d.ts", ".tsx"]
-      // },
       "alias": {
         "map": [["~", "./src"]],
         "extensions": [".js", ".jsx", ".ts", ".d.ts", ".tsx"]

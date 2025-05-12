@@ -70,14 +70,18 @@ export default Vue.extend({
     createTask() {
       this.$emit('open-modal');
     },
+    updateFilterParams() {
+      this.$emit('upadate-filter-params', { input: this.inputValue, filter: this.selectedFilter });
+    },
   },
 
   watch: {
     inputValue: debounce(function () {
-      this.$emit('upadate-filter-params', { input: this.inputValue, filter: this.selectedFilter });
+      this.updateFilterParams();
     }, 300),
+
     selectedFilter() {
-      this.$emit('upadate-filter-params', { input: this.inputValue, filter: this.selectedFilter });
+      this.updateFilterParams();
     },
   },
 });
@@ -115,11 +119,13 @@ export default Vue.extend({
     }
   }
 }
+
 .first-section,
 .second-section,
 .buttons {
   display: flex;
 }
+
 @media #{$desktop-breakpoint} {
   .header {
     height: get-desktop-size(200);
@@ -152,14 +158,17 @@ export default Vue.extend({
       }
     }
   }
+
   .first-section {
     flex-grow: 1;
     gap: get-desktop-size(30);
   }
+
   .second-section,
   .buttons {
     gap: get-desktop-size(30);
   }
+
   .buttons {
     align-items: center;
   }
@@ -197,13 +206,16 @@ export default Vue.extend({
       }
     }
   }
+
   .first-section {
     gap: get-mobile-size(10);
     align-items: center;
   }
+
   .second-section {
     justify-content: space-between;
   }
+
   .buttons {
     flex-direction: column;
     gap: get-mobile-size(10);

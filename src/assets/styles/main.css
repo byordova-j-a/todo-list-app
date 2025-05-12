@@ -4,12 +4,14 @@ body {
   width: 100svw;
   background-color: #e6edfd;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 #app {
   height: 100%;
   width: 100%;
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  overflow: hidden;
 }
 
 p {
@@ -21,17 +23,4 @@ p {
   src: url(~fonts/18VAG-Rounded-M-Normal.ttf);
   font-weight: 500;
   font-style: normal;
-}
-
-@font-face {
-  font-family: 'Cataneo';
-  src: url(~fonts/Cataneo-BT-Regular.ttf);
-  font-weight: 500;
-  font-style: normal;
-}
-
-@media #{$desktop-breakpoint} {
-  body {
-    // padding: get-desktop-size(20);
-  }
 }
